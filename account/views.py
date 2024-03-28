@@ -2,9 +2,9 @@ from django.contrib.auth import authenticate
 from django.utils.timezone import now
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status
-
 
 from .serializers import SignUpSerializer, UserSerializer
 from .models import User
@@ -13,7 +13,7 @@ from .tokens import create_jwt_pair_for_user
 # Create your views here.
 
 
-class SignUpView(APIView):
+class SignUpView(GenericAPIView):
     serializer_class = SignUpSerializer
 
     def post(self, request):
